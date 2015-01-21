@@ -38,12 +38,6 @@ Deploys a dacpac file to a database.
 
 ### Attribute Parameters
 
-attribute :name, :kind_of => String, :name_attribute => true
-attribute :path, :kind_of => String
-attribute :connection_string, :kind_of => String
-attribute :database_name, :kind_of => String
-attribute :publish_file_path, :kind_of => String
-
 - `name` - name attribute. Name of the process to be executed.
 - `path` - path of the dacpac file.
 - `connection_string` - SQL Server connection string. Example:  "Data Source=localhost;User ID=sa;Password=***;"
