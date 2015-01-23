@@ -25,7 +25,7 @@ include Chef::Mixin::PowershellOut
 
 action :deploy do
 
-  Chef::Log.info("Deploy of #{@new_resource.name} started")
+  Chef::Log.info("Deploy of #{@new_resource.name} has started")
 
   script =<<-EOF
     $exitVal=0
@@ -53,7 +53,7 @@ action :deploy do
       }
       catch
       {
-        $message = \"Join Error - \";
+        $message = \"Deploy Error - \";
         $message += $_;
         $exitVal=1;
       }

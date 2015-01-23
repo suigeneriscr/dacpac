@@ -1,7 +1,7 @@
 Description
 ===========
 
-Deploy Microsoft Visual Studio database project using DacServices of the SQL Server Data Tools
+Provides database tools for deploy Visual Studio database projects. Use the DacServices tools of the SQL Server Data Tools package
 
 Requirements
 ============
@@ -54,6 +54,44 @@ Deploys a dacpac file to a database.
       publish_file_path "C:\\chef\chef_cache\\dacpac\\database-deploy-options.xml"
       action :deploy
     end
+
+dacpac_backup
+---------
+
+Backup a database using SQL Server Full backup method.
+
+### Actions
+
+- `:backup` - Makes a backup of a SQL Server database.
+
+### Attribute Parameters
+
+attribute :instance, :kind_of => String
+attribute :login, :kind_of => String
+attribute :password, :kind_of => String
+attribute :database_name, :kind_of => String
+attribute :path, :kind_of => String
+
+- `name` - name attribute. Name of the process to be executed.
+- `path` - path where the backup file will be stored.
+- `login` - user name of the database
+- `login` - user name of the database
+- `password` - password of the user to login
+- `database_name` - name of the database where the dacpac file will be deployed
+
+### Examples
+
+    # backup a SQL Server database
+    now = Time.now.strftime("%Y%m%d%H%M%S")
+    database_name = "AdventureWorks"
+	dacpac_backup "AdventureWorks" do
+	  path  "C:\\DATABASES\\BACKUP\\#{database_name}_#{now}.bak"
+	  instance "localhost"
+	  login "sa"
+	  password "***"
+	  database_name "#{database_name}"
+	  action :backup
+	end
 
 License and Author
 ==================
