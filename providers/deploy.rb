@@ -61,7 +61,7 @@ action :deploy do
       exit $exitVal;
     }
 
-    deployDatabase "'#{ENV['ProgramFiles(x86)']}\\Microsoft SQL Server\\110\\DAC\\bin\\Microsoft.SqlServer.Dac.dll'" "'#{@new_resource.publish_file_path}'" "'#{@new_resource.connection_string}'" "'#{@new_resource.path}'" "'#{@new_resource.database_name}'"
+    deployDatabase "'#{node['sql_server']['install_dir']}\\Microsoft SQL Server\\110\\DAC\\bin\\Microsoft.SqlServer.Dac.dll'" "'#{@new_resource.publish_file_path}'" "'#{@new_resource.connection_string}'" "'#{@new_resource.path}'" "'#{@new_resource.database_name}'"
   EOF
 
   result = powershell_out(script)

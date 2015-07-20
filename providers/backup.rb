@@ -66,7 +66,7 @@ action :backup do
     }
 
 
-    backupDatabase "'#{ENV['ProgramFiles(x86)']}\\Microsoft SQL Server\\110\\SDK\\Assemblies'" "'#{@new_resource.instance}'" "'#{@new_resource.login}'" "'#{@new_resource.password}'" "'#{@new_resource.database_name}'" "'#{@new_resource.path}'"
+    backupDatabase "'#{node['sql_server']['install_dir']}\\Microsoft SQL Server\\110\\SDK\\Assemblies'" "'#{@new_resource.instance}'" "'#{@new_resource.login}'" "'#{@new_resource.password}'" "'#{@new_resource.database_name}'" "'#{@new_resource.path}'"
   EOF
 
   result = powershell_out(script)
